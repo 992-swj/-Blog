@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+* {
+	font-size: 13px;
+}
+
+#middle_left #list>li {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	border-bottom: 1px solid;
+}
+
+#middle_left #list>li:last-child {
+	border: none;
+}
+
+#middle_left #list>li>div {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+#paging {
+	float: left;
+}
+
+.clicksorcomments {
+	display: flex;
+	justify-content: flex-end;
+}

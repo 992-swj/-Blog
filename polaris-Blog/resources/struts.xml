@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="getuserinfo" class="u_getaction" method="getUser">
+			<result name="success">/index.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		<action name="userlistarticle" class="A_articleWhereUser"
+			method="list">
+			<result name="success">/list.jsp</result>
+		</action>
+		<action name="quanxian" class="JurisdictionDemo" method="demo">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="login" class="u_userlogin" method="login">
+			<result name="success" type="redirectAction">userlistarticle?userid=${#request.userid}
+			</result>
+			<result name="error" type="redirectAction">getuserinfo</result>
+		</action>
+		<action name="userall" class="userAll" method="getUser">
+			<result name="success">/userlist.jsp</result>
+		</action>
+		<action name="exit" class="exit" method="exit">
+			<result name="success" type="redirectAction">getuserinfo</result>
+		</action>
+		<action name="concat" class="contentaction" method="connent">
+			<result name="success">/article_link.jsp</result>
+		</action>
+		<action name="article_comment" class="post_comment" method="post_comment">
+			<result name="success" type="redirectAction">concat</result>
+		</action>
+		<action name="save" class="save" method="save">
+			<result name="success" type="redirectAction">getuserinfo</result>
+		</action>
+		<action name="article_ids" class="chkArticle" method="chkArticles">
+			<result name="success">/chkArticle.jsp</result>
+		</action>
+		<action name="comment" class="comment" method="comment">
+			<result name="success">/comment.jsp</result>
+		</action>
+		<action name="delcomment" class="c_delcomment" method="delcomment">
+			<result name="success" type="redirectAction">comment</result>
+			<result name="error" type="redirectAction">comment</result>
+		</action>
+		<action name="delarticle" class="delarticle" method="del">
+			<result name="success" type="redirectAction">article_ids</result>
+		</action>
+		<action name="userszsgc" class="articleaction" method="articelall">
+			<result name="success">/user.jsp</result>
+		</action>
+		<action name="delAllUser" class="articleaction" method="delAllUser">
+			<result name="success" type="redirectAction">userszsgc</result>
+		</action>
+		<action name="DN" class="DN" method="DN">
+			<result name="none">/register.jsp</result>
+		</action>
+		<action name="register" class="DN" method="insert">
+			<result name="success" type="redirectAction">getuserinfo</result>
+		</action>
+		<action name="updarticle" class="updatewenzhang" method="udpdate">
+			<result name="success">/update_article.jsp</result>
+		</action>
+		<action name="update" class="update" method="updatearticle">
+			<result name="success" type="redirectAction">getuserinfo</result>
+		</action>
+	</package>
+
+</struts>    

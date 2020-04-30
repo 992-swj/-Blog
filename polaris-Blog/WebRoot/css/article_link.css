@@ -1,0 +1,12 @@
+*{
+    font-size: 13px;
+}
+
+#article #Quote{
+    border-left: 5px solid #2e4e7e;
+    padding: 1.1px;
+    
+}
+#article ul li{border-bottom: 1px solid;display: grid;grid-template-columns: auto;}
+#article ul li:last-child{border: none;}
+#article ul li p:nth-child(2){display: flex;justify-content: flex-end;}

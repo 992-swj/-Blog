@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.swj.dao.UserInfoMapper">
+	<!-- 查询所有用户信息 -->
+	<select id="getUserInfoAll" resultType="UserInfo">
+		select * from userinfos
+	</select>
+	<!-- 登录操作 -->
+	<select id="UserInfoLogin" parameterType="string" resultType="UserInfo">
+		select * from userinfos where loginid=#{loginid}
+	</select>
+	<!-- 这里是测试的,在登录action中就行判断，登录获取到密码，
+	并且获取到用户身份，然后调用此方法，获取到身份所拥有的权限信息 -->
+	<select id="getidentity" parameterType="int" resultType="Jurisdiction">
+		select * from Jurisdiction where 1=1
+		<if test="identity!=null and identity==0">
+			and identity=#{identity}
+		</if>
+	</select>
+	
+	<select id="getUserWhereNoAdmin" resultType="UserInfo">
+		select * from userinfos where adminis=0
+	</select>
+	<delete id="delUser" parameterType="int">
+		delete from userinfos where userid=#{userid}
+	</delete>
+	<select id="DN" parameterType="string" resultType="UserInfo">
+		select * from userinfos where loginid=#{loginid}
+	</select>
+	<insert id="register" parameterType="UserInfo">
+		insert into userinfos values (seq_userinfo.nextval,#{loginid},#{loginpwd},#{username},#{QQ},#{mail},0)
+	</insert>
+</mapper>

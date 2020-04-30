@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.swj.dao.CommentMapper">
+	<select id="getComment" parameterType="int" resultType="Comment">
+		select *
+		from comments where articleid=#{articleid}
+		order by pubdate desc
+	</select>
+	<insert id="getPost_comments" parameterType="Comment">
+		insert into comments values (seq_comment.nextval,#{article.articleid},#{authorname},#{commentcontent},#{pubdate})
+	</insert>
+	<select id="queryComment" resultType="Comment">
+		select * from comments
+	</select>
+	 <delete id="delcomment" parameterType="int">
+	 	delete from comments where commentid=#{commentid}
+	 </delete>
+</mapper>
